@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="button-container">
+    <button (click)="addWidget()">Add Widget</button>
+    <button (click)="restoreWidget()">Restore Deleted Widget</button>
+  </div>
+
+  <gridster [options]="options">
+    <gridster-item *ngFor="let item of dashboard; let i = index; trackBy: trackByIndex" [item]="item">
+      <div class="card">
+        <!-- Card Header with Title Editing and Action Buttons -->
+        <div class="card-header">
+          <div *ngIf="isEditing[i]; else titleDisplay">
+            <input type="text" [(ngModel)]="item.title" placeholder="Enter title" class="title-input" />
+            <button class="save-btn" (click)="saveWidget(i)">Save</button>
+          </div>
+          <ng-template #titleDisplay>
+            <span class="card-title">{{ item.title }}</span>
+            <div class="action-buttons">
+              <button class="edit-btn" (click)="editWidget(i)">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="delete-btn" (click)="deleteWidget(i)">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </ng-template>
+        </div>
+
+        <!-- Card Content Area -->
+        <div class="card-content">
+          <!-- Edit Mode: Show Textarea for Editing Content -->
+          <div *ngIf="isEditing[i]">
+            <textarea [(ngModel)]="item.content" placeholder="Enter content" class="content-textarea"></textarea>
+          </div>
+
+          <!-- Display Mode: Conditionally Render Widget Content Based on Title -->
+          <ng-container *ngIf="!isEditing[i]">
+            <!-- Overview Widget -->
+            <div *ngIf="item.title === 'OverView'" class="overview">
+              <div class="quick-stats"><strong>Today:</strong><span>78</span></div>
+              <div class="quick-stats"><strong>This month:</strong><span>459</span></div>
+              <div class="quick-stats"><strong>All time:</strong><span>54k</span></div>
+              <div class="quick-stats"><strong>Bounce rate:</strong><span>81.08%</span></div>
+              <div class="quick-stats"><strong>Session duration:</strong><span>00:01:41</span></div>
+              <div class="quick-stats"><strong>New session:</strong><span>63.86%</span></div>
+            </div>
+
+            <!-- Charts Widget -->
+            <app-charts *ngIf="item.title === 'Charts'" [chartType]="'pie'"></app-charts>
+
+            <!-- Notifications Widget -->
+            <div *ngIf="item.title === 'Notifications'" class="notification-section">
+              <div *ngFor="let notification of notifications" class="notification">
+                <i class="fas fa-bell notification-icon"></i>
+                <div class="notification-block">
+                  <span>{{ notification.message }}</span>
+                  <span class="notification-timestamp">{{ notification.time }}</span>
+                </div>
+              </div>
+              <button class="view-all-notifications-btn" (click)="viewAllNotifications()">View All Notifications</button>
+            </div>
+
+            <!-- Alerts Widget -->
+            <div *ngIf="item.title === 'Alerts'" class="alert-section">
+              <div *ngFor="let alert of alerts" class="alert">
+                <i class="fas fa-exclamation-triangle alert-icon"></i>
+                <div class="alert-block">
+                  <span>{{ alert.message }}</span>
+                  <span class="alert-timestamp">{{ alert.time }}</span>
+                </div>
+              </div>
+              <button class="resolve-alerts-btn" (click)="resolveAlerts()">Resolve Alerts</button>
+            </div>
+
+            <!-- Additional Info: Progress Bar Chart -->
+            <app-charts *ngIf="item.title === 'Additional Info'" [chartType]="'progress-bar'"></app-charts>
+            <app-charts *ngIf="item.title === 'Performance Status'" [chartType]="'line'"></app-charts>
+
+            <!-- Default Content Display -->
+            <p *ngIf="!['OverView', 'Charts', 'Performance Status', 'Notifications', 'Alerts', 'Additional Info'].includes(item.title)">
+              {{ item.content }}
+            </p>
+          </ng-container>
+        </div>
+      </div>
+    </gridster-item>
+  </gridster>
+</div>

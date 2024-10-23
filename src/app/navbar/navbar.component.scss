@@ -1,0 +1,115 @@
+
+.navbar-brand {
+    font-size: 1.5rem; /* Font size for the brand */
+    margin-bottom: 20px; /* Margin below the brand */
+    display: block; /* Make it block to fill space */
+}
+
+.navbar-nav {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove padding */
+}
+
+.nav-item {
+    margin: 10px 0; /* Space between nav items */
+}
+
+.nav-link {
+    color: #007bff; 
+    text-decoration: none; 
+    font-size: 1.1rem; 
+    display: block; 
+}
+
+.nav-link:hover {
+    text-decoration: underline; 
+}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+
+.wrapper {
+    display: flex;
+    height: 100vh; /* Full height of the viewport */
+}
+
+.sidebar {
+    width: 250px; /* Width of the sidebar */
+    height: 100vh; /* Full height of the sidebar */
+    background-color: #f8f9fa; /* Background color for the sidebar */
+    padding: 20px; /* Padding around the sidebar */
+    position: fixed; /* Keep the sidebar fixed */
+    left: 0; /* Align to the left */
+    top: 0; /* Align to the top */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.main-content {
+    margin-left: 250px; /* Adjust for sidebar width */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px; /* Adjust padding as needed */
+    background-color: #fff; /* Background color for top navbar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.container {
+    flex: 1; /* Take remaining space below the top navbar */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    padding: 20px; /* Adjust padding as needed */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 300px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 8px 40px 8px 10px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-bar .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}
+
+.navbar-icons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-icons a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.navbar-icons img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+
+

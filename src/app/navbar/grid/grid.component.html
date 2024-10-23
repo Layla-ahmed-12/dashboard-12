@@ -1,0 +1,89 @@
+<div class="grid-container">
+  <h2>Grid Management</h2>
+  <button (click)="addPopup()" class="btn btn-primary" style="align-items: right; margin-bottom: 20px;">Add New</button>
+
+  <div id="main" class="col-sm-offset-3 col-sm-9">
+    <jqxGrid
+      #myGrid
+      class="grid"
+      [width]="getWidth()"
+      [source]="dataAdapter"
+      [columns]="columns"
+      [theme]="'metro'" 
+      [autoheight]="true"
+      [pageable]="true"
+      [altrows]="true"
+      [enabletooltips]="true"
+      [editable]="true"
+      [filterable]="true"
+      [selectionmode]="'multiplecellsadvanced'"
+      [sortable]="true"
+      [columnsresize]="true"
+      class="jqx-grid"
+    ></jqxGrid>
+
+    <jqxWindow
+      #myWindow
+      [width]="300"
+      [height]="200"
+      [resizable]="true"
+      [isModal]="false"
+      [autoOpen]="false"
+      [modalOpacity]="'0.01'"
+    >
+      <div>Edit User</div>
+      <div style="overflow: hidden">
+        <table style="margin: 0 auto; margin-top: 1.5rem">
+          <tr>
+            <td align="right">Name:</td>
+            <td align="left">
+              <jqxInput #name [width]="150" [height]="23"></jqxInput>
+            </td>
+          </tr>
+          <tr>
+            <td align="right">Address:</td>
+            <td align="left">
+              <jqxInput #address [width]="150" [height]="23"></jqxInput>
+            </td>
+          </tr>
+          <tr>
+            <td align="right">Email:</td>
+            <td align="left">
+              <jqxInput #email [width]="150" [height]="23"></jqxInput>
+            </td>
+          </tr>
+          <tr>
+            <td align="right"></td>
+            <td style="padding-top: 10px" align="right">
+              <jqxButton style="margin-right: 5px" (onClick)="saveBtn()">
+                Save
+              </jqxButton>
+              <jqxButton style="margin-right: 5px" (onClick)="cancelBtn()">
+                Cancel
+              </jqxButton>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </jqxWindow>
+
+    <jqxWindow
+      #confirmWindow
+      [width]="250"
+      [height]="150"
+      [resizable]="false"
+      [isModal]="true"
+      [autoOpen]="false"
+      [modalOpacity]="'0.01'"
+    >
+      <div>Confirm Deletion</div>
+      <div style="overflow: hidden">
+        <p>Are you sure you want to delete this item?</p>
+        <div style="text-align: right; margin-top: 10px">
+          <jqxButton (onClick)="confirmDelete()">Yes</jqxButton>
+          <jqxButton (onClick)="cancelDelete()">No</jqxButton>
+        </div>
+      </div>
+    </jqxWindow>
+  </div>
+</div>

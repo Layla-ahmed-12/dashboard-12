@@ -1,0 +1,74 @@
+.modal-header {
+  background-color: #007bff; // Primary color for the header
+  color: white; // Text color in the header
+  border-bottom: none; // Remove border at the bottom
+  padding: 15px; // Adjusted padding for better spacing
+
+  .modal-title {
+    margin: 0; // Remove margin from title
+    font-weight: bold; // Make title bold
+  }
+
+  .close {
+    color: white; // Close button color
+    opacity: 0.9; // Slight opacity for close button
+    transition: opacity 0.2s; // Transition effect for close button
+
+    &:hover {
+      opacity: 1; // Full opacity on hover
+    }
+  }
+}
+
+.modal-body {
+  padding: 20px; // Padding inside the modal body
+}
+
+.form-group {
+  margin-bottom: 15px; // Space between form groups
+
+  label {
+    font-weight: bold; // Make labels bold
+  }
+
+  input {
+    border-radius: 4px; // Rounded corners for inputs
+    border: 1px solid #ced4da; // Light border for inputs
+
+    &:focus {
+      border-color: #80bdff; // Border color on focus
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); // Shadow effect on focus
+    }
+  }
+}
+
+.btn-secondary {
+  background-color: #6c757d; // Secondary button color
+  color: white; // Text color
+  transition: background-color 0.3s; // Transition for background color
+
+  &:hover {
+    background-color: #5a6268; // Darker shade on hover
+  }
+}
+
+.btn-primary {
+  background-color: #007bff; // Primary button color
+  color: white; // Text color
+  transition: background-color 0.3s; // Transition for background color
+
+  &:hover {
+    background-color: #0056b3; // Darker shade on hover
+  }
+}
+
+// Responsive design adjustments
+@media (max-width: 768px) {
+  .modal-header {
+    text-align: center; // Center title on smaller screens
+  }
+
+  .modal-body {
+    padding: 15px; // Adjust padding for smaller screens
+  }
+}
